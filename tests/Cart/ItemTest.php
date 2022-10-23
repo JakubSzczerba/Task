@@ -15,7 +15,8 @@ class ItemTest extends TestCase
      */
     public function itAcceptsConstructorArgumentsAndReturnsData(): void
     {
-        $product = (new Product())->setUnitPrice(10000);
+        $product = new Product();
+        $product->setUnitPrice(10000);
 
         $item = new Item($product, 10);
 
@@ -30,7 +31,8 @@ class ItemTest extends TestCase
      */
     public function constructorThrowsExceptionWhenQuantityIsTooLow(): void
     {
-        $product = (new Product())->setMinimumQuantity(10);
+        $product = new Product();
+        $product->setMinimumQuantity(10);
 
         new Item($product, 9);
     }
@@ -41,7 +43,8 @@ class ItemTest extends TestCase
      */
     public function itThrowsExceptionWhenSettingTooLowQuantity(): void
     {
-        $product = (new Product())->setMinimumQuantity(10);
+        $product = new Product();
+        $product->setMinimumQuantity(10);
 
         $item = new Item($product, 10);
         $item->setQuantity(9);
